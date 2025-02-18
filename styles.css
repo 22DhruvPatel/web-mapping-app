@@ -8,3 +8,7 @@
 .container {
   text-align: center;
 }
+
+.filter-buttons button {
+  margin: 5px;
+}
