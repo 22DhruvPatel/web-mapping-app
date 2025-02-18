@@ -44,6 +44,14 @@ function addMarkers() {
 
 
 
-
+function filterMarkers(category) {
+  markers.forEach((marker) => {
+      if (category === "all" || marker.category === category) {
+          marker.setMap(map);
+      } else {
+          marker.setMap(null);
+      }
+  });
+}
 
 
