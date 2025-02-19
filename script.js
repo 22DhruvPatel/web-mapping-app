@@ -55,3 +55,33 @@ function filterMarkers(category) {
 }
 
 
+
+document.getElementById("geo-btn").addEventListener("click", () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        if (userMarker) {
+          userMarker.setMap(null);
+        }
+
+        userMarker = new google.maps.Marker({
+          position: pos,
+          map,
+          icon: "assets/icons/map-marker.png",
+        });
+        map.setCenter(pos);
+      },
+      () => alert("Geolocation failed")
+
+    );
+  } else {
+    alert("Geolocation is not supported by this brower.");
+  }
+})
+
+
